@@ -11,8 +11,8 @@
     </a>
 </p>
 <p>
-    <a th:href="@{/provinces}">
-        Provinces
+    <a th:href="@{/category}">
+        Category
     </a>
 </p>
 <div class="notify">
@@ -21,25 +21,27 @@
     </div>
 </div>
 
-<table id = "customers">
+<table id = "tasks">
     <thead>
     <tr>
         <th>STT</th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Province</th>
+        <th>Name</th>
+        <th>Note</th>
+        <th>Amount</th>
+        <th>Category</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="c,cStatus : ${customers}">
-        <td th:text="${cStatus.count}"></td>
-        <td th:text="${c.getFirstName()}"></td>
-        <td th:text="${c.getLastName()}"></td>
-        <td th:text="${c.getProvince().getName()}"></td>
-        <td><a th:href="@{/customers/update/{id}(id=${c.getId()})}">update</a></td>
-        <td><a th:href="@{/customers/delete/{id}(id=${c.getId()})}">delete</a></td>
+    <tr th:each="t,tStatus : ${task}">
+        <td th:text="${tStatus.count}"></td>
+        <td th:text="${t.getName()}"></td>
+        <td th:text="${t.getNote()}"></td>
+        <td th:text="${t.getAmount()}"></td>
+        <td th:text="${t.getCategory().getName()}"></td>
+        <td><a th:href="@{/tasks/update/{id}(id=${t.getId()})}">update</a></td>
+        <td><a th:href="@{/tasks/delete/{id}(id=${t.getId()})}">delete</a></td>
     </tr>
     </tbody>
 </table>
