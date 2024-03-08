@@ -20,24 +20,18 @@
         <span th:text="${message}"></span>
     </div>
 </div>
-<button><a th:href="@{/category/total}">Get Total Amount by Category</a></button>
+
 <table id = "tasks">
     <thead>
     <tr>
-        <th>STT</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>Total</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="c, cStatus : ${category}">
-        <td th:text="${cStatus.count}"></td>
-        <td th:text="${c.getName()}"> </td>
-        <td th:text="${c.getDescription()}"> </td>
-        <td><a th:href="@{/category/update/{id}(id=${c.getId()})}">update</a></td>
-        <td><a th:href="@{/category/delete/{id}(id=${c.getId()})}">delete</a></td>
+    <tr th:each="t : ${totals}">
+        <td th:text="${t.getNameCategory()}"></td>
+        <td th:text="${t.getTotalAmount()}"></td>
     </tr>
     </tbody>
 </table>

@@ -1,6 +1,7 @@
 package com.minitest2.controller;
 
-import com.minitest2.model.Category;
+import com.minitest2.model.dto.TotalAmount;
+import com.minitest2.model.entity.Category;
 import com.minitest2.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,5 +56,12 @@ public class CategoryController {
         categoryService.remove(id);
         attributes.addFlashAttribute("message", "Delete successfully");
         return "redirect:/category";
+    }
+    @GetMapping("/total")
+    public ModelAndView total(){
+        ModelAndView modelAndView = new ModelAndView("/categoryview/total");
+        Iterable<TotalAmount> totalAmounts = categoryService.getTotalAmount();
+        modelAndView.addObject("totals", totalAmounts);
+        return modelAndView;
     }
 }

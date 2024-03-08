@@ -1,6 +1,7 @@
 package com.minitest2.service.category;
 
-import com.minitest2.model.Category;
+import com.minitest2.model.dto.TotalAmount;
+import com.minitest2.model.entity.Category;
 import com.minitest2.repository.ICategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,10 @@ public class CategoryService implements ICategoryService{
     @Override
     public void remove(Long id) {
         categoryRepo.deleteById(id);
+    }
+
+    @Override
+    public Iterable<TotalAmount> getTotalAmount() {
+        return categoryRepo.getTotalAmount();
     }
 }

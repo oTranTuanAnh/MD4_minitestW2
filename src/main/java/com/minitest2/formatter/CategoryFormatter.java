@@ -1,6 +1,6 @@
 package com.minitest2.formatter;
 
-import com.minitest2.model.Category;
+import com.minitest2.model.entity.Category;
 import com.minitest2.service.category.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;

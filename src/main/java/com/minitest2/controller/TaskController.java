@@ -1,7 +1,7 @@
 package com.minitest2.controller;
 
-import com.minitest2.model.Category;
-import com.minitest2.model.Task;
+import com.minitest2.model.entity.Category;
+import com.minitest2.model.entity.Task;
 import com.minitest2.service.category.ICategoryService;
 import com.minitest2.service.task.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +56,12 @@ public class TaskController {
     public String update(@ModelAttribute("task") Task task, RedirectAttributes redirectAttributes){
         taskService.save(task);
         redirectAttributes.addFlashAttribute("message", "Update task successfully");
+        return "redirect:/tasks";
+    }
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        taskService.remove(id);
+        redirectAttributes.addFlashAttribute("message", "Delete task successfully");
         return "redirect:/tasks";
     }
 

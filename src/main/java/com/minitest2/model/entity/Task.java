@@ -1,4 +1,4 @@
-package com.minitest2.model;
+package com.minitest2.model.entity;
 
 import javax.persistence.*;
 
