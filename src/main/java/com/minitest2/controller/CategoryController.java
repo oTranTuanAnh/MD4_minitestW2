@@ -37,7 +37,7 @@ public class CategoryController {
     public ModelAndView updateForm(@PathVariable Long id){
         Optional<Category> category = categoryService.findById(id);
         if (category.isPresent()){
-            ModelAndView modelAndView = new ModelAndView("/category/update");
+            ModelAndView modelAndView = new ModelAndView("/categoryview/update");
             modelAndView.addObject("category",category.get());
             return modelAndView;
         } else {

@@ -6,12 +6,11 @@ import com.minitest2.service.category.ICategoryService;
 import com.minitest2.service.task.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/tasks")
@@ -40,6 +39,23 @@ public class TaskController {
     public String create(@ModelAttribute("task") Task task, RedirectAttributes redirectAttributes){
         taskService.save(task);
         redirectAttributes.addFlashAttribute("message", "Successfully create new task!");
+        return "redirect:/tasks";
+    }
+    @GetMapping("/update/{id}")
+    public ModelAndView updateForm(@PathVariable Long id){
+        Optional<Task> task = taskService.findById(id);
+        if (task.isPresent()){
+            ModelAndView modelAndView = new ModelAndView("/taskview/update");
+            modelAndView.addObject("task", task.get());
+            return modelAndView;
+        } else {
+            return new ModelAndView("/error");
+        }
+    }
+    @PostMapping("/update/{id}")
+    public String update(@ModelAttribute("task") Task task, RedirectAttributes redirectAttributes){
+        taskService.save(task);
+        redirectAttributes.addFlashAttribute("message", "Update task successfully");
         return "redirect:/tasks";
     }
 
