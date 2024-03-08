@@ -48,7 +48,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF");
+        templateResolver.setPrefix("/WEB-INF/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCharacterEncoding("UTF-8");
@@ -107,8 +107,8 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
-    }
+//    @Override
+//    public void addFormatters(FormatterRegistry registry) {
+//        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
+//    }
 }
