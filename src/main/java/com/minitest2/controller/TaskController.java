@@ -11,6 +11,7 @@ public class TaskController {
     @GetMapping("")
     public ModelAndView showTask(){
         ModelAndView modelAndView = new ModelAndView("/taskview/list");
+        modelAndView.addObject("task",)
         return modelAndView;
     }
 
